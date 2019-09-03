@@ -9,10 +9,10 @@
 	
 	
 <style>
-    
-	
-	/*  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        */
+ 
+	body {
+            font-family: Arial, Helvetica, sans-serif
+        }
 	
 .button {
     background-color: #4CAF50; /* Green */
@@ -75,11 +75,12 @@
 	color:#FFF;
 	border-radius:50px;
 	text-align:center;
-  font-size:30px;
+        font-size:30px;
 	box-shadow: 2px 2px 3px #999;
-  z-index:100;
+        z-index:100;
 }
-.my-float{
+	
+    .my-float{
 	margin-top:16px;
 }
 	
@@ -87,15 +88,16 @@
     
 </style>
 </head>
+	
 <body>
 	
-<div id="myDiv"></div>
+<div id="myWa"></div>
     
 
     
 <script type="text/javascript">
   $(function () {
-    $('#myDiv').floatingWhatsApp({
+    $('#myWa').floatingWhatsApp({
       phone: '6581968289',
       popupMessage: 'Hello, how can we help you?',
       showPopup: true
@@ -104,13 +106,6 @@
 </script>
 	
 	
-	
-    <!--
-<div style="text-align: center;">
-<h2>WhatsApp</h2>
-<button class="button button1" onclick="window.location.href='whatsapp://send?phone=6562211521&text=Hi%2C+I+need+support.+Could+you+assist+me%3F'">Contact us</button>
-</div>
--->
     
 <div style="text-align: center;">
 <h2>WhatsApp Support</h2>
@@ -132,11 +127,14 @@
   color="blue"
   size="large">
 </div>
-  <!--  <a href="https://wa.me/6581968289?text=Hi%2C+I+need+support.+Could+you+assist+me%3F" class="float" target="_blank">
-<i class="fa fa-whatsapp my-float"></i> -->
+ 
+	
+	
 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <a href="https://wa.me/6581968289?text=Hi%2C+I+need+support.+Could+you+assist+me%3F" class="float" target="_blank">
 <i class="fa fa-whatsapp my-float"></i>
 </a>
+	
 </body>
+	
 </html>
