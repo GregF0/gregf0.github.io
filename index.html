@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="floating-wpp.min.js"></script>
+<link rel="stylesheet" href="floating-wpp.min.css">
+	
+	
 <style>
     
 	
@@ -80,7 +86,24 @@
 </style>
 </head>
 <body>
-
+	
+<div id="myDiv"></div>
+</body>
+<script type="text/javascript">
+  $(function () {
+    $('#myDiv').floatingWhatsApp({
+      phone: '5491133359850'
+    });
+  });
+</script>
+	
+	
+$('#myDiv').floatingWhatsApp({
+    phone: '5491133359850',
+    popupMessage: 'Hello, how can we help you?',
+    showPopup: true
+});
+	
     <!--
 <div style="text-align: center;">
 <h2>WhatsApp</h2>
