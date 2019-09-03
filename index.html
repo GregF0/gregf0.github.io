@@ -1,37 +1,143 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Floating WhatsApp Button Demo</title>
-    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="floating-wpp.css">
-    <script type="text/javascript" src="floating-wpp.js"></script>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif
-        }
-    </style>
+	
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="floating-wpp.min.js"></script>
+<link rel="stylesheet" href="floating-wpp.min.css">
+	
+	
+<style>
+    
+	
+	/*  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        */
+	
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-align:center;
+    cursor: pointer;
+}
+.button1 {
+    background-color: #40c945; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    text-align:center;
+}
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+    
+    .button2 {
+    background-color: #40c945; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    text-align:center;
+}
+    .button2:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+    
+      .button3 {
+    background-color: #40c945; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    text-align:center;
+}
+    .button3:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+    
+    .float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+.my-float{
+	margin-top:16px;
+}
+	
+	
+    
+</style>
 </head>
-
 <body>
-    <div id="myButton"></div>
-</body>
+	
+<div id="myDiv"></div>
+    
 
+    
 <script type="text/javascript">
-    $(function () {
-        $('#myButton').floatingWhatsApp({
-            phone: '5491133359850',
-            popupMessage: 'Hello, how can we help you?',
-            message: "I'd like to order a pizza",
-            showPopup: true,
-            showOnIE: false,
-            headerTitle: 'Welcome!',
-            headerColor: 'crimson',
-            backgroundColor: 'crimson',
-            buttonImage: '<img src="burger.svg" />'
-        });
+  $(function () {
+    $('#myDiv').floatingWhatsApp({
+      phone: '6581968289'
+      phone: '6581968289',
+      popupMessage: 'Hello, how can we help you?',
+      showPopup: true
     });
+  });
 </script>
-
+	
+	
+	
+    <!--
+<div style="text-align: center;">
+<h2>WhatsApp</h2>
+<button class="button button1" onclick="window.location.href='whatsapp://send?phone=6562211521&text=Hi%2C+I+need+support.+Could+you+assist+me%3F'">Contact us</button>
+</div>
+-->
+    
+<div style="text-align: center;">
+<h2>WhatsApp Support</h2>
+<button class="button button1" onclick="window.location.href='https://wa.me/639216812646?text=Hi%2C+I+need+support.+Could+you+assist+me%3F'">Contact us</button>
+</div>
+    <div style="text-align: center;">
+<h2>WhatsApp Connect</h2>
+<button class="button button2" onclick="window.location.href='https://wa.me/6581968289?text=Hi%2C+I+need+support.+Could+you+assist+me%3F'">Contact us</button>
+</div>
+    
+     <div style="text-align: center;">
+<h2>WhatsApp Bot</h2>
+<button class="button button3" onclick="window.location.href='https://wa.me/6562218849?text=Hi%2C+I+need+support.+Could+you+assist+me%3F'">Contact us</button>
+</div>
+    
+<div style="text-align: center;" class="fb-messengermessageus" 
+  messenger_app_id="2174159616243919" 
+  page_id="WavecellGroup"
+  color="blue"
+  size="large">
+</div>
+  <!--  <a href="https://wa.me/6581968289?text=Hi%2C+I+need+support.+Could+you+assist+me%3F" class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i> -->
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://wa.me/6581968289?text=Hi%2C+I+need+support.+Could+you+assist+me%3F" class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
+</body>
 </html>
