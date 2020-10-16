@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="floating-wpp.min.js"></script>
+	<script src="https://sp.zalo.me/plugins/sdk.js"></script>
+	
+<link rel="stylesheet" href="floating-wpp.min.css">
+	
+	
+<style>
+ 
+	body {
+            font-family: Helvetica, sans-serif
+        }
+	
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 4px 200px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-align:center;
+    cursor: pointer;
+}
+.button1 {
+    background-color: #40c945; 
+    color: black; 
+    border: 2px solid #4CAF50;
+	    margin: 4px 200px;
+
+    border-radius: 12px;
+    text-align:center;
+}
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+    
+    .button2 {
+    background-color: #40c945; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    text-align:center;
+}
+    .button2:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+    
+      .button3 {
+    background-color: #40c945; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    text-align:center;
+}
+    .button3:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+    
+    .float{
+	position:fixed;
+	width:70px;
+	height:70px;
+	bottom:400px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+        font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+        z-index:100;
+}
+	
+    .my-float{
+	margin-top:22px;
+	width:30px;
+	height:30px;
+}
+	
+	
+    
+</style>
+</head>
+	
+<body>
+	
+<div id="myWa"></div>
+    
+
+    
+<script type="text/javascript">
+  $(function () {
+    $('#myWa').floatingWhatsApp({
+      phone: '6581968289',
+      popupMessage: 'Hello, how can we help you?',
+      showPopup: true,
+	    zIndex: 2,
+    });
+  });
+</script>
+	
+  
+  <form>
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+</form>
+
+	
+    <div style="text-align: center;">
+<h2>Click to Call</h2>
+<button class="button button2" onclick="window.location.href='https://video-interaction.com/help?vi_key=uVsWXcFLYj&vi_cr=Test123'">Contact us</button>
+</div>
+    
+
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://wa.me/6581968289?text=Hi%2C+I+need+support.+Could+you+assist+me%3F" class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
+	
+</body>
+	
+</html>
