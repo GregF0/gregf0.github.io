@@ -1,0 +1,238 @@
+<html>
+  <head>
+    <!-- Google tag (gtag.js) -->
+	  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MC8LMQVMV"></script>
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9MC8LMQVMV');
+    </script>
+            
+    <meta charset="utf-8">
+    <title>Custom Strava Heatmap Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+    <link rel="manifest" href="../favicon/site.webmanifest">
+
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="http://cultureplot.com/strava-heatmap/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mapping Strava Activities" />
+    <meta property="og:description" content="A highly customizable heatmap for your Strava activities"/>
+
+    <meta property="og:image" content="https://cultureplot.com/img/chicago_run_map.png" />
+    <meta property="og:image:alt" content="Strava activity heatmap" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://cultureplot.com/img/chicago_run_map.png" />
+    <meta name="twitter:image:alt" content="Strava activity heatmap" />
+    <meta name="twitter:description" content="A highly customizable heatmap for your Strava activities"/>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/jieter/Leaflet.encoded/master/Polyline.encoded.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.min.css?v=4" />
+  </head>
+
+  <body>
+    <img id="preview" src="img/activity_heatmap.png">
+
+    <!-- loading modal -->
+    <div id="loaderModal" class="modal">
+      <div id="loader" class="modal-content-2">
+        <h1>Loading...</h1>
+        <div class="loader"></div>
+        <h4 id="activityCounter">0 activities found...</h4>
+      </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="logInModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Strava Activity Heatmap</h1>
+          <p style="margin-top: 0px;">By <a href="https://cultureplot.com/about/" target="_blank">Oliver Gladfelter</a></p>
+        </div>
+        <div class="modal-body">
+          <p style="margin-top: 0px;">Connect to Strava to see your activity heatmap. Once connected, you'll be able to filter the activities, customize the map, and jump to your common starting locations. Use the <span style='line-height: 0px'>&#x1F4F7;</span> button to capture your favorite views.</p>
+          <!-- <p>Click the button below to get started:</p> -->
+          <div style="text-align:center;"><a class="stravaButton" href="https://www.strava.com/oauth/authorize?client_id=47842&response_type=code&redirect_uri=https://cultureplot.com/strava-heatmap/index.html&approval_prompt=auto&scope=activity:read_all"><img id="strava-button-img" class="stravaButton" src="img/btn_strava_connect.png"></a></div>
+          <p>You can also <span class="fakeLink" onclick="demo()">click here to demo the heatmap with my data</span> or watch the video below:</p>
+          <div style="text-align:center; margin-top:0px;">
+              <video width="90%" controls muted autoplay loop poster="img/activity_heatmap.png" id="video">
+                  <source src="img/video.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+          </div>
+          <p onclick="document.getElementById('fileInput').click()">Don't use Strava? <span class="fakeLink">Click here to manually upload GPX files</span>.</p>
+          <input id="fileInput" type="file" onchange="readMultipleFiles(event)" multiple style="display:none;"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- the map -->
+    <div id="map" style="width:100%; height:100%; display:none;"></div>
+    <!--  -->
+
+    <div class="buttonOnDemo" id="buttonOnDemo"><a href="https://www.strava.com/oauth/authorize?client_id=47842&response_type=code&redirect_uri=https://cultureplot.com/strava-heatmap/index.html&approval_prompt=auto&scope=activity:read_all"><img width="50%;" id="strava-button-img" src="img/btn_strava_connect.png"></a></div>
+
+    <!-- div container to hold menu items -->
+    <div id="menuContainer" class="menuContainer">
+
+      <!-- a menu for filtering options -->
+      <div id="filterMenu" class="menu">
+        <div id="menuHeaderContainer1" class="menuHeaderContainer">
+          <table style="width:100%;">
+            <tr style="width:100%;">
+              <td class="menuHeader">Filters</td>
+              <td id="menuButton1" class="menuButton">-</td>
+            </tr>
+          </table>
+        </div>
+
+        <table id="filterMenuTable" class="filterMenuTable" style="display:table;">
+          <tr>
+            <td id="dateLabel" class="menuItemLabel">Any date</td>
+            <td><div id="dateSlider" class="dateSlider"></div></td>
+          </tr>
+          <tr>
+            <td id="timeLabel" class="menuItemLabel">Any time</td>
+            <td><div id="timeSlider" class="timeSlider"></div></td>
+          </tr>
+          <tr id="activitiesRow">
+            <td class="menuItemLabel">Activities</td>
+            <td>
+                <div class="dropdown">
+                  <button class="dropbtn" id="dropdownButton">Activity types</button>
+                  <div id="activityMenu" class="dropdown-content"></div>
+                </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--  -->
+
+      <!-- a menu for customizing the appearance -->
+      <div id="filterMenu" class="menu" style="border-top: none; border-bottom: none;">
+        <div id="menuHeaderContainer3" class="menuHeaderContainer">
+          <table style="width:100%;">
+            <tr style="width:100%;">
+              <td class="menuHeader">Settings</td>
+              <td id="menuButton3" class="menuButton">+</td>
+            </tr>
+          </table>
+        </div>
+
+        <table id="customizeMenuTable" class="filterMenuTable">
+          <tr>
+            <td style="width:30%;">
+              Map Type
+            </td>
+            <td id="mapOptionsTd">
+              <div style="display:flex; justify-content:space-around; cursor:hover;">
+                <span id="noMapButton" class="selectedSpan menuOptions">None</span>
+                <span id="terrainMapButton" class="menuOptions">Terrain</span>
+                <span id="lightMapButton" class="menuOptions">Light</span>
+                <span id="darkMapButton" class="menuOptions">Dark</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="backgroundColorPicker">
+            <td>Background Color</td>
+            <td><input id="backgroundColor" type="color" value="#000626"></td>
+          </tr>
+          <tr>
+            <td>Line Color</td>
+            <td>
+              <div style="width:33%;display:inline-block;">
+                <input id="lineColor" type="color" value="#00C2C2">
+              </div>
+              <div class="dropdown" style="display:inline-block;">
+                <button class="dropColorbtn" onmouseover="showActivityColorMenu()" id="colorByActivityButton">By activity</button>
+                <div id="colorByActivityMenu" class="dropdown-content" style="right:0;"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Line Thickness</td>
+            <td><div id="thicknessSlider"></div></td>
+          </tr>
+          <tr>
+            <td>Line Opacity</td>
+            <td><div id="alphaSlider"></div></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div style="display:flex; justify-content:space-evenly;">
+                  <span id="imperial" class="selectedSpan menuOptions">Imperial</span>
+                  <span id="metric" class="menuOptions">Metric</span>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--  -->
+
+      <!-- a menu for programatically jumping around the map -->
+      <div id="jumperMenu" class="menu">
+        <div id="menuHeaderContainer2" class="menuHeaderContainer">
+          <table style="width:100%;">
+            <tr style="width:100%;">
+              <td class="menuHeader">Jump to...</td>
+              <td id="menuButton2" class="menuButton">+</td>
+            </tr>
+          </table>
+        </div>
+
+        <table id="jumperTable" class="filterMenuTable"></table>
+      </div>
+      <!--  -->
+      
+      <!-- modal -->
+      <div id="printModal" class="printModal">
+        <div class="modal-content-3">
+          <span onclick="document.getElementById('printModal').style.display='none';" class="closeButton">&times;</span>
+          <h1>Choose your screenshot resolution</h1>
+            <div class="row">
+              <div id="normalResolutionButton" class="column">
+                  <h2>Normal-resolution</h2>
+                  <p>Ideal for storing and sharing digitally</p>
+                  <div id="downloadButton1"><i class="fa fa-download"></i></div>
+              </div>
+              <div id="highResolutionButton" class="column" style="border-left:1px #C0C0C0 solid;">
+                  <h2>High-resolution</h2>
+                  <p>Suitable for printing out into a poster</p>
+                  <div id="downloadButton2"><i class="fa fa-download"></i></div>
+              </div>
+            </div>
+        </div>
+      </div>
+    
+    </div>
+
+    <script src="js/script.min.js?v=7"></script>
+    <script src="js/ui.min.js?v=2"></script>
+    <script src="js/strava_api.min.js?v=4"></script>
+    <script src="js/BigImage.min.js?v=2"></script>
+
+  </body>
+</html>
