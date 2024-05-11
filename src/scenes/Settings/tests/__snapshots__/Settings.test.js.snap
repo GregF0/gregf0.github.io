@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Settings /> should render <Settings /> correctly 1`] = `
+<styled.div
+  sidenav={0}
+>
+  <Sliders />
+  <DaySelect />
+  <Switches />
+</styled.div>
+`;

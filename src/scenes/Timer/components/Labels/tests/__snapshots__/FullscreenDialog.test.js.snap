@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FullscreenDialog /> should render <FullscreenDialog /> correctly 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(Dialog))
+    TransitionComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    aria-describedby="alert-dialog-description"
+    dark={0}
+    fullScreen={true}
+    onClose={[Function]}
+    open={true}
+  >
+    <Styled(WithStyles(ForwardRef(AppBar)))>
+      <WithStyles(ForwardRef(Toolbar))>
+        <WithStyles(ForwardRef(IconButton))
+          aria-label="close"
+          color="inherit"
+          edge="start"
+          onClick={[Function]}
+        >
+          <CloseIcon />
+        </WithStyles(ForwardRef(IconButton))>
+        <Styled(WithStyles(ForwardRef(Typography)))
+          variant="h6"
+        >
+          Create
+           Label
+        </Styled(WithStyles(ForwardRef(Typography)))>
+        <WithStyles(ForwardRef(IconButton))
+          aria-label="save label"
+          color="inherit"
+          disabled={true}
+          onClick={[Function]}
+        >
+          <CheckIcon />
+        </WithStyles(ForwardRef(IconButton))>
+      </WithStyles(ForwardRef(Toolbar))>
+    </Styled(WithStyles(ForwardRef(AppBar)))>
+    <Styled(WithStyles(ForwardRef(DialogContent)))>
+      <LabelForm />
+    </Styled(WithStyles(ForwardRef(DialogContent)))>
+  </WithStyles(ForwardRef(Dialog))>
+  <DeleteAlert />
+</Fragment>
+`;

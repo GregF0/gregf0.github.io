@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SaveSessionAlert /> should render <SaveSessionAlert /> correctly 1`] = `
+<WithStyles(ForwardRef(Dialog))
+  aria-describedby="save-session-alert-description"
+  aria-labelledby="save-session-alert-title"
+  onClose={[Function]}
+  open={true}
+>
+  <WithStyles(ForwardRef(DialogTitle))
+    id="save-session-alert-title"
+  >
+    Save session?
+  </WithStyles(ForwardRef(DialogTitle))>
+  <WithStyles(ForwardRef(DialogContent))>
+    <WithStyles(ForwardRef(DialogContentText))
+      id="save-session-alert-description"
+    >
+      Do you want to save
+       
+      <styled.span
+        color="#f50057"
+      >
+        04
+        :
+        11
+      </styled.span>
+       
+      to the statistics?
+    </WithStyles(ForwardRef(DialogContentText))>
+  </WithStyles(ForwardRef(DialogContent))>
+  <WithStyles(ForwardRef(DialogActions))>
+    <WithStyles(ForwardRef(Button))
+      onClick={[Function]}
+    >
+      Don't save
+    </WithStyles(ForwardRef(Button))>
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+      onClick={[Function]}
+    >
+      Save
+    </WithStyles(ForwardRef(Button))>
+  </WithStyles(ForwardRef(DialogActions))>
+</WithStyles(ForwardRef(Dialog))>
+`;

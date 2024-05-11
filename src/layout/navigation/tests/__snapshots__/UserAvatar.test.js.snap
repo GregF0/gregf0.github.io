@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserAvatar /> should render <UserAvatar /> correctly 1`] = `
+<Fragment>
+  <Styled(WithStyles(ForwardRef(Avatar)))
+    alt="Alex"
+    onClick={[Function]}
+    sidenav={0}
+    src="https://via.placeholder.com/100"
+  />
+  <WithStyles(ForwardRef(Menu))
+    anchorEl={null}
+    id="user-menu"
+    keepMounted={true}
+    onClose={[Function]}
+    open={false}
+  >
+    <WithStyles(ForwardRef(MenuItem))
+      onClick={[Function]}
+    >
+      Sign Out
+    </WithStyles(ForwardRef(MenuItem))>
+  </WithStyles(ForwardRef(Menu))>
+</Fragment>
+`;

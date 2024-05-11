@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Sliders /> should render <Sliders /> correctly 1`] = `
+<Fragment>
+  <Slider
+    action={[Function]}
+    marks={
+      Array [
+        Object {
+          "label": "5 min",
+          "value": 5,
+        },
+        Object {
+          "label": "25 min",
+          "value": 25,
+        },
+        Object {
+          "label": "60 min",
+          "value": 60,
+        },
+      ]
+    }
+    max={60}
+    min={5}
+    name="Work duration"
+    step={5}
+    unit="minutes"
+    value={25}
+  />
+  <Slider
+    action={[Function]}
+    marks={
+      Array [
+        Object {
+          "label": "5 min",
+          "value": 5,
+        },
+        Object {
+          "label": "30 min",
+          "value": 30,
+        },
+      ]
+    }
+    max={30}
+    min={5}
+    name="Short break duration"
+    step={5}
+    unit="minutes"
+    value={5}
+  />
+  <Slider
+    action={[Function]}
+    marks={
+      Array [
+        Object {
+          "label": "5 min",
+          "value": 5,
+        },
+        Object {
+          "label": "20 min",
+          "value": 20,
+        },
+        Object {
+          "label": "45 min",
+          "value": 45,
+        },
+      ]
+    }
+    max={45}
+    min={5}
+    name="Long break duration"
+    step={5}
+    unit="minutes"
+    value={20}
+  />
+  <Slider
+    action={[Function]}
+    marks={
+      Array [
+        Object {
+          "label": "2",
+          "value": 2,
+        },
+        Object {
+          "label": "4",
+          "value": 4,
+        },
+        Object {
+          "label": "15",
+          "value": 15,
+        },
+      ]
+    }
+    max={15}
+    min={2}
+    name="Rounds"
+    step={1}
+    unit="rounds"
+    value={4}
+  />
+</Fragment>
+`;

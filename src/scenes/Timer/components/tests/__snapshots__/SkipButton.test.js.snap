@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SkipButton /> should render <SkipButton /> correctly 1`] = `
+<Styled(WithStyles(ForwardRef(IconButton)))
+  aria-label="Skip current timer"
+  disabled={false}
+  onClick={[Function]}
+  size="small"
+>
+  <SkipNextIcon />
+</Styled(WithStyles(ForwardRef(IconButton)))>
+`;
